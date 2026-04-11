@@ -1,8 +1,10 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useCallback, useState } from 'react'
+import { motion, AnimatePresence, useMotionValue, useDragControls } from 'framer-motion'
 import { useWindowStore, WindowId } from '@/store/windowStore'
+
+type ResizeDir = 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w' | 'nw'
 
 interface MacWindowProps {
   id: WindowId
@@ -13,6 +15,17 @@ interface MacWindowProps {
   minHeight?: number
   className?: string
 }
+
+const HANDLES: { dir: ResizeDir; className: string; cursor: string }[] = [
+  { dir: 'n',  className: 'top-0 left-3 right-3 h-1',    cursor: 'ns-resize'   },
+  { dir: 'ne', className: 'top-0 right-0 w-3 h-3',       cursor: 'nesw-resize' },
+  { dir: 'e',  className: 'top-3 bottom-3 right-0 w-1',  cursor: 'ew-resize'   },
+  { dir: 'se', className: 'bottom-0 right-0 w-3 h-3',    cursor: 'nwse-resize' },
+  { dir: 's',  className: 'bottom-0 left-3 right-3 h-1', cursor: 'ns-resize'   },
+  { dir: 'sw', className: 'bottom-0 left-0 w-3 h-3',     cursor: 'nesw-resize' },
+  { dir: 'w',  className: 'top-3 bottom-3 left-0 w-1',   cursor: 'ew-resize'   },
+  { dir: 'nw', className: 'top-0 left-0 w-3 h-3',        cursor: 'nwse-resize' },
+]
 
 export default function MacWindow({
   id,
@@ -25,7 +38,11 @@ export default function MacWindow({
 }: MacWindowProps) {
   const { windows, closeWindow, minimizeWindow, maximizeWindow, focusWindow } = useWindowStore()
   const win = windows[id]
-  const constraintsRef = useRef<HTMLDivElement>(null)
+  const dragControls = useDragControls()
+
+  const posX = useMotionValue(defaultPosition.x)
+  const posY = useMotionValue(defaultPosition.y)
+  const [size, setSize] = useState({ width: minWidth, height: minHeight })
 
   const handleFocus = useCallback(() => {
     focusWindow(id)
@@ -33,17 +50,65 @@ export default function MacWindow({
 
   const isMaximized = win.isMaximized
 
+  const handleResizeStart = useCallback((e: React.MouseEvent, dir: ResizeDir) => {
+    e.preventDefault()
+    e.stopPropagation()
+    focusWindow(id)
+
+    const startMouseX = e.clientX
+    const startMouseY = e.clientY
+    const startW = size.width
+    const startH = size.height
+    const startPX = posX.get()
+    const startPY = posY.get()
+
+    const onMove = (ev: MouseEvent) => {
+      const dx = ev.clientX - startMouseX
+      const dy = ev.clientY - startMouseY
+
+      let newW = startW
+      let newH = startH
+      let newX = startPX
+      let newY = startPY
+
+      if (dir.includes('e')) newW = Math.max(minWidth, startW + dx)
+      if (dir.includes('s')) newH = Math.max(minHeight, startH + dy)
+      if (dir.includes('w')) {
+        newW = Math.max(minWidth, startW - dx)
+        newX = newW === minWidth ? startPX + startW - minWidth : startPX + dx
+      }
+      if (dir.includes('n')) {
+        newH = Math.max(minHeight, startH - dy)
+        newY = newH === minHeight ? startPY + startH - minHeight : startPY + dy
+      }
+
+      setSize({ width: newW, height: newH })
+      posX.set(newX)
+      posY.set(newY)
+    }
+
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseup', onUp)
+    }
+
+    document.addEventListener('mousemove', onMove)
+    document.addEventListener('mouseup', onUp)
+  }, [size, posX, posY, minWidth, minHeight, focusWindow, id])
+
   return (
     <AnimatePresence>
       {win.isOpen && !win.isMinimized && (
         <motion.div
           key={id}
           drag={!isMaximized}
+          dragControls={dragControls}
+          dragListener={false}
           dragMomentum={false}
           dragElastic={0}
           dragConstraints={{
             left: 0,
-            right: typeof window !== 'undefined' ? window.innerWidth - minWidth : 800,
+            right: typeof window !== 'undefined' ? window.innerWidth - size.width : 800,
             top: 28,
             bottom: typeof window !== 'undefined' ? window.innerHeight - 60 : 700,
           }}
@@ -54,25 +119,23 @@ export default function MacWindow({
           onMouseDown={handleFocus}
           style={{
             position: 'fixed',
-            x: isMaximized ? 0 : defaultPosition.x,
-            y: isMaximized ? 28 : defaultPosition.y,
+            x: isMaximized ? 0 : posX,
+            y: isMaximized ? 28 : posY,
             zIndex: win.zIndex,
-            width: isMaximized ? '100vw' : undefined,
-            height: isMaximized ? 'calc(100vh - 28px)' : undefined,
-            minWidth: isMaximized ? undefined : minWidth,
-            minHeight: isMaximized ? undefined : minHeight,
+            width: isMaximized ? '100vw' : size.width,
+            height: isMaximized ? 'calc(100vh - 28px)' : size.height,
           }}
           className={`flex flex-col rounded-xl shadow-2xl overflow-hidden border border-white/20 ${
             isMaximized ? 'rounded-none' : ''
           } ${className}`}
         >
-          {/* Title Bar */}
+          {/* Title Bar — drag initiates here only */}
           <div
             className="flex items-center h-9 px-3 bg-gray-100/90 backdrop-blur-xl border-b border-gray-200/60 flex-shrink-0 select-none"
             style={{ cursor: isMaximized ? 'default' : 'grab' }}
-            onMouseDown={(e) => {
-              if ((e.target as HTMLElement).closest('.traffic-lights')) {
-                e.stopPropagation()
+            onPointerDown={(e) => {
+              if (!(e.target as HTMLElement).closest('.traffic-lights') && !isMaximized) {
+                dragControls.start(e)
               }
             }}
           >
@@ -111,6 +174,16 @@ export default function MacWindow({
           <div className="flex-1 bg-white/85 backdrop-blur-xl overflow-auto">
             {children}
           </div>
+
+          {/* Resize handles — hidden when maximized */}
+          {!isMaximized && HANDLES.map(({ dir, className: cls, cursor }) => (
+            <div
+              key={dir}
+              className={`absolute ${cls}`}
+              style={{ cursor, zIndex: 50 }}
+              onMouseDown={(e) => handleResizeStart(e, dir)}
+            />
+          ))}
         </motion.div>
       )}
     </AnimatePresence>

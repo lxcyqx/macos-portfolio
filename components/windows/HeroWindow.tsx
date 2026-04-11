@@ -37,7 +37,7 @@ export default function HeroWindow() {
           software engineer & designer at <span className="font-semibold text-gray-700">Google</span>
         </p>
         <p className="mt-1 text-gray-400 text-xs max-w-xs">
-          Brown &apos;22 · Display Ads · prev. STEP · part-time artist
+          Brown &apos;22 · Display Ads
         </p>
 
         {/* Social links */}

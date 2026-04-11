@@ -8,7 +8,6 @@ import { useWindowStore } from '@/store/windowStore'
 const sidebar = [
   { label: 'All Projects', filter: 'all', icon: '📂' },
   { label: 'Engineering & Design', filter: 'engineering', icon: '⚙️' },
-  { label: 'Design', filter: 'design', icon: '🎨' },
   { label: 'Art & Illustration', filter: 'art', icon: '🖼️' },
 ]
 
