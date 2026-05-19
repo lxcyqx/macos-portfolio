@@ -48,7 +48,7 @@ export default function HeroWindow() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-blue-600 transition-colors"
           >
-            <span className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white text-sm shadow">in</span>
+            <Image src="/icons/linkedin.png" alt="LinkedIn" width={14} height={14} unoptimized />
             LinkedIn
           </a>
           <a
@@ -57,14 +57,14 @@ export default function HeroWindow() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-900 transition-colors"
           >
-            <span className="w-7 h-7 rounded-lg bg-gray-900 flex items-center justify-center text-white text-sm shadow">⌥</span>
+            <Image src="/icons/github-sign.png" alt="GitHub" width={14} height={14} unoptimized />
             GitHub
           </a>
           <a
             href="mailto:lucyqu_@alumni.brown.edu"
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-rose-500 transition-colors"
           >
-            <span className="w-7 h-7 rounded-lg bg-rose-500 flex items-center justify-center text-white text-sm shadow">✉</span>
+            <Image src="/icons/gmail.png" alt="Email" width={14} height={14} unoptimized />
             Email
           </a>
         </div>
