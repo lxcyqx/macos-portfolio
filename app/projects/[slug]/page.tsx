@@ -12,6 +12,7 @@ import FineArtPage from '@/app/projects/_content/FineArt'
 import DigitalIllustrationPage from '@/app/projects/_content/DigitalIllustration'
 import AnimationPage from '@/app/projects/_content/Animation'
 import ArchitecturePage from '@/app/projects/_content/Architecture'
+import ProudHousePage from '@/app/projects/_content/ProudHouse'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -30,6 +31,14 @@ export default async function ProjectPage({ params }: Props) {
     return (
       <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
         <ComputerGraphicsPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'proud-house') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <ProudHousePage />
       </WindowChrome>
     )
   }

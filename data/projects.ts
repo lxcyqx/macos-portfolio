@@ -31,6 +31,16 @@ export const projects: Project[] = [
     role: 'full-stack developer',
   },
   {
+    slug: 'proud-house',
+    title: 'proud-house',
+    displayTitle: 'Proud House',
+    subtitle: 'Merch Design Concept',
+    category: 'design',
+    year: '2023',
+    coverImage: '/images/proud-house/ph_3.png',
+    role: 'designer',
+  },
+  {
     slug: 'iterative-design',
     title: 'iterative-design',
     displayTitle: 'Iterative Design & User Testing',
