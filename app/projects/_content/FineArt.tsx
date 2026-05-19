@@ -12,30 +12,35 @@ type Artwork = {
 }
 
 const artworks: Artwork[] = [
+  // 2024
   { title: 'Just Do It',                            medium: 'Screenprint · 13 × 13 in',        year: '2024', thumbnail: '/images/fine-art/thumbnails/just-do-it.jpg',        full: '/images/fine-art/just-do-it.jpg' },
+  { title: 'Hydrangeas',                            medium: 'Screenprint · 16 × 12 in',        year: '2024', thumbnail: '/images/fine-art/thumbnails/hydrangeas.jpg',         full: '/images/fine-art/hydrangeas.jpg' },
+  // 2022
   { title: 'Process',                               medium: 'Oil on Canvas · 3 × 4 ft',         year: '2022', thumbnail: '/images/fine-art/thumbnails/organic.jpg',            full: '/images/fine-art/organic.jpg' },
+  { title: 'Meeting Me at Central Park',            medium: 'Oil on Canvas · 4 × 5 ft',         year: '2022', thumbnail: '/images/fine-art/thumbnails/park.jpg',               full: '/images/fine-art/park.jpg' },
+  { title: 'Baggage',                               medium: 'Oil on Canvas · 3 × 4 ft',         year: '2022', thumbnail: '/images/fine-art/thumbnails/hanging.jpg',            full: '/images/fine-art/hanging.jpg' },
+  // 2020
   { title: 'The Coming',                            medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/pagan.jpg',              full: '/images/fine-art/pagan.jpg' },
   { title: 'Beyond',                                medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/person.jpg',             full: '/images/fine-art/person.jpg' },
   { title: 'Transition',                            medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/face.jpg',               full: '/images/fine-art/face.jpg' },
-  { title: 'Workspace',                             medium: 'Colored Pencil on Paper',          year: '2018', thumbnail: '/images/fine-art/thumbnails/workspace.jpg',          full: '/images/fine-art/workspace.jpg' },
-  { title: 'Where Did We Come From Where Do We Go', medium: 'Acrylic on Paper',                 year: '2019', thumbnail: '/images/fine-art/thumbnails/house.jpg',              full: '/images/fine-art/house.JPG' },
-  { title: 'Self Portrait',                         medium: 'Pencil on Paper',                  year: '2018', thumbnail: '/images/fine-art/thumbnails/self-portrait.jpg',      full: '/images/fine-art/self-portrait.jpg' },
-  { title: 'Subway',                                medium: 'Scratchboard',                     year: '2018', thumbnail: '/images/fine-art/thumbnails/scratchboard.jpg',       full: '/images/fine-art/scratchboard.jpg' },
-  { title: 'Hydrangeas',                            medium: 'Screenprint · 16 × 12 in',        year: '2024', thumbnail: '/images/fine-art/thumbnails/hydrangeas.jpg',         full: '/images/fine-art/hydrangeas.jpg' },
-  { title: 'Meeting Me at Central Park',            medium: 'Oil on Canvas · 4 × 5 ft',         year: '2022', thumbnail: '/images/fine-art/thumbnails/park.jpg',               full: '/images/fine-art/park.jpg' },
   { title: 'From the Woods',                        medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/forest.jpg',             full: '/images/fine-art/forest.jpg' },
   { title: 'Sky',                                   medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/sky_monotype.jpg',       full: '/images/fine-art/sky_monotype.jpg' },
-  { title: 'Plants',                                medium: 'Charcoal on Paper',                year: '2019', thumbnail: '/images/fine-art/thumbnails/plant.jpg',              full: '/images/fine-art/plant.JPG' },
   { title: 'Persistence',                           medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/persistence.jpg',        full: '/images/fine-art/persistence.jpg' },
-  { title: 'Man on Subway',                         medium: 'Acrylic on Cardboard',             year: '2018', thumbnail: '/images/fine-art/thumbnails/business man.jpg',       full: '/images/fine-art/business man.jpg' },
-  { title: 'Sweater',                               medium: 'Pencil on Paper',                  year: '2018', thumbnail: '/images/fine-art/thumbnails/Sweater.jpg',            full: '/images/fine-art/Sweater.jpg' },
-  { title: 'Baggage',                               medium: 'Oil on Canvas · 3 × 4 ft',         year: '2022', thumbnail: '/images/fine-art/thumbnails/hanging.jpg',            full: '/images/fine-art/hanging.jpg' },
   { title: 'Woods',                                 medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/woods.jpg',              full: '/images/fine-art/woods.jpg' },
   { title: 'Mountains',                             medium: 'Monotype, Ink on Rives BFK',       year: '2020', thumbnail: '/images/fine-art/thumbnails/mountain_monotype.jpg',  full: '/images/fine-art/mountain_monotype.jpg' },
   { title: 'Splash',                                medium: 'Watercolor Monotype',              year: '2020', thumbnail: '/images/fine-art/thumbnails/splash_monotype.jpg',    full: '/images/fine-art/splash_monotype.jpg' },
+  // 2019
+  { title: 'Where Did We Come From Where Do We Go', medium: 'Acrylic on Paper',                 year: '2019', thumbnail: '/images/fine-art/thumbnails/house.jpg',              full: '/images/fine-art/house.JPG' },
+  { title: 'Plants',                                medium: 'Charcoal on Paper',                year: '2019', thumbnail: '/images/fine-art/thumbnails/plant.jpg',              full: '/images/fine-art/plant.JPG' },
+  { title: 'Corn',                                  medium: 'Pencil on Paper',                  year: '2019', thumbnail: '/images/fine-art/thumbnails/corn.jpg',               full: '/images/fine-art/corn.JPG' },
+  // 2018
+  { title: 'Workspace',                             medium: 'Colored Pencil on Paper',          year: '2018', thumbnail: '/images/fine-art/thumbnails/workspace.jpg',          full: '/images/fine-art/workspace.jpg' },
+  { title: 'Self Portrait',                         medium: 'Pencil on Paper',                  year: '2018', thumbnail: '/images/fine-art/thumbnails/self-portrait.jpg',      full: '/images/fine-art/self-portrait.jpg' },
+  { title: 'Subway',                                medium: 'Scratchboard',                     year: '2018', thumbnail: '/images/fine-art/thumbnails/scratchboard.jpg',       full: '/images/fine-art/scratchboard.jpg' },
+  { title: 'Man on Subway',                         medium: 'Acrylic on Cardboard',             year: '2018', thumbnail: '/images/fine-art/thumbnails/business man.jpg',       full: '/images/fine-art/business man.jpg' },
+  { title: 'Sweater',                               medium: 'Pencil on Paper',                  year: '2018', thumbnail: '/images/fine-art/thumbnails/Sweater.jpg',            full: '/images/fine-art/Sweater.jpg' },
   { title: 'Red Bags',                              medium: 'Acrylic on Cardboard',             year: '2018', thumbnail: '/images/fine-art/thumbnails/red-bags.jpg',           full: '/images/fine-art/red-bags.jpg' },
   { title: 'Woman With Bike',                       medium: 'Acrylic on Cardboard',             year: '2018', thumbnail: '/images/fine-art/thumbnails/woman-with-bike.jpg',    full: '/images/fine-art/woman-with-bike.jpg' },
-  { title: 'Corn',                                  medium: 'Pencil on Paper',                  year: '2019', thumbnail: '/images/fine-art/thumbnails/corn.jpg',               full: '/images/fine-art/corn.JPG' },
 ]
 
 export default function FineArtPage() {

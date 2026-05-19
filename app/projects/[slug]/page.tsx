@@ -9,6 +9,9 @@ import BookDepositoryRedesignPage from '@/app/projects/_content/BookDepositoryRe
 import ABTestingPage from '@/app/projects/_content/ABTesting'
 import PersonasPage from '@/app/projects/_content/Personas'
 import FineArtPage from '@/app/projects/_content/FineArt'
+import DigitalIllustrationPage from '@/app/projects/_content/DigitalIllustration'
+import AnimationPage from '@/app/projects/_content/Animation'
+import ArchitecturePage from '@/app/projects/_content/Architecture'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -27,6 +30,30 @@ export default async function ProjectPage({ params }: Props) {
     return (
       <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
         <ComputerGraphicsPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'architecture') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <ArchitecturePage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'animation') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <AnimationPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'digital-illustration') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <DigitalIllustrationPage />
       </WindowChrome>
     )
   }
