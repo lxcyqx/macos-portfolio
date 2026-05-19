@@ -9,7 +9,6 @@ const messages = [
   { text: "previously i did two SWE internships at Google and one at GivePulse 💼", delay: 0.3 },
   { text: "at Brown, i was Head TA for Data Structures & Algorithms and basically *almost* got a Visual Arts degree — took tons of studio art classes including some at RISD 🎨", delay: 0.45 },
   { text: "outside of work: gym, pilates, yoga, traveling, trying new restaurants, art events 🌍", delay: 0.6 },
-  { text: "and yes, i went to Brown University 🐻", delay: 0.75 },
 ]
 
 export default function AboutWindow() {
@@ -28,7 +27,7 @@ export default function AboutWindow() {
             L
           </div>
           <p className="text-sm font-semibold text-gray-800">lucy</p>
-          <p className="text-xs text-gray-400">software engineer · artist · brown &apos;22</p>
+          <p className="text-xs text-gray-400">software engineer · brown &apos;22</p>
         </div>
 
         {/* Chat bubbles */}
@@ -60,7 +59,7 @@ export default function AboutWindow() {
           </a>
           <span className="text-gray-300">·</span>
           <a
-            href="mailto:lucyqu_@alumni.brown.edu"
+            href="mailto:lucyqu28@gmail.com"
             className="text-xs text-blue-600 hover:underline font-medium"
           >
             Email

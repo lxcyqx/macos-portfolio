@@ -111,7 +111,7 @@ function MobileFallback() {
           <h1 className="text-2xl font-bold text-gray-800" style={{ fontFamily: 'Georgia, serif' }}>
             hi, i&apos;m lucy! 👋
           </h1>
-          <p className="text-gray-500 text-sm mt-1">software engineer & designer at Google</p>
+          <p className="text-gray-500 text-sm mt-1">software engineer at Google</p>
           <p className="text-gray-400 text-xs mt-0.5">Brown &apos;22 · Display Ads · part-time artist</p>
 
           <div className="flex items-center gap-4 mt-4">
@@ -119,7 +119,7 @@ function MobileFallback() {
                className="text-sm text-blue-600 hover:underline font-medium">LinkedIn</a>
             <a href="https://github.com/lxcyqx" target="_blank" rel="noopener noreferrer"
                className="text-sm text-gray-700 hover:underline font-medium">GitHub</a>
-            <a href="mailto:lucyqu_@alumni.brown.edu"
+            <a href="mailto:lucyqu28@gmail.com"
                className="text-sm text-rose-500 hover:underline font-medium">Email</a>
           </div>
         </div>

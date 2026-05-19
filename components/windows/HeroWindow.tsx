@@ -16,7 +16,7 @@ export default function HeroWindow() {
         {/* Avatar */}
         <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-xl mb-5">
           <Image
-            src="/images/profile.jpg"
+            src="/images/garden.jpg"
             alt="Lucy"
             fill
             className="object-cover"
@@ -34,10 +34,10 @@ export default function HeroWindow() {
 
         {/* Bio */}
         <p className="mt-2 text-gray-500 text-sm leading-relaxed max-w-xs">
-          software engineer & designer at <span className="font-semibold text-gray-700">Google</span>
+          software engineer at <span className="font-semibold text-gray-700">Google</span>
         </p>
         <p className="mt-1 text-gray-400 text-xs max-w-xs">
-          Brown &apos;22 · Display Ads
+          Brown &apos;22
         </p>
 
         {/* Social links */}
@@ -61,7 +61,7 @@ export default function HeroWindow() {
             GitHub
           </a>
           <a
-            href="mailto:lucyqu_@alumni.brown.edu"
+            href="mailto:lucyqu28@gmail.com"
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-rose-500 transition-colors"
           >
             <Image src="/icons/gmail.png" alt="Email" width={14} height={14} unoptimized />

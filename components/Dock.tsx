@@ -27,6 +27,8 @@ function DockItem({ icon, label, onClick, mouseX, href, showDot }: DockItemProps
   const yRaw = useTransform(distance, [0, 60, 120], [-12, -6, 0])
   const y = useSpring(yRaw, { stiffness: 300, damping: 25 })
 
+  const isImage = icon.startsWith('/')
+
   const content = (
     <motion.div
       ref={ref}
@@ -34,8 +36,11 @@ function DockItem({ icon, label, onClick, mouseX, href, showDot }: DockItemProps
       className="relative flex flex-col items-center group cursor-pointer"
       onClick={onClick}
     >
-      <div className="w-12 h-12 flex items-center justify-center text-3xl drop-shadow-lg select-none">
-        {icon}
+      <div className="w-12 h-12 flex items-center justify-center drop-shadow-lg select-none">
+        {isImage
+          ? <img src={icon} alt={label} className="w-full h-full object-contain" />
+          : <span className="text-3xl">{icon}</span>
+        }
       </div>
       {/* Tooltip label */}
       <div className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
@@ -67,7 +72,7 @@ export default function Dock() {
 
   const items = [
     {
-      icon: '🚀',
+      icon: '/icons/launchpad.png',
       label: 'Launchpad',
       onClick: () => openWindow('hero'),
       showDot: windows.hero.isMinimized,
@@ -79,19 +84,19 @@ export default function Dock() {
       showDot: windows.projects.isMinimized,
     },
     {
-      icon: '💬',
+      icon: '/icons/imessage.png',
       label: 'About Me',
       onClick: () => openWindow('about'),
       showDot: windows.about.isMinimized,
     },
     {
-      icon: '🧭',
+      icon: '/icons/safari.png',
       label: 'GitHub',
       onClick: () => window.open('https://github.com/lxcyqx', '_blank'),
       href: undefined,
     },
     {
-      icon: '✉️',
+      icon: '/icons/mail.png',
       label: 'Mail',
       onClick: () => { window.location.href = 'mailto:lucyqu_@alumni.brown.edu' },
     },

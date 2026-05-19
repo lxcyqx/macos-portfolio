@@ -24,8 +24,7 @@ export default function MenuBar() {
     <div className="fixed top-0 left-0 right-0 h-7 z-[9999] flex items-center justify-between px-4 bg-black/30 backdrop-blur-xl border-b border-white/10">
       {/* Left side */}
       <div className="flex items-center gap-4 text-white text-xs font-medium">
-        <span className="text-sm">🍎</span>
-        <span className="font-semibold">Finder</span>
+        <img src="icons/apple-white-logo.svg" alt="Apple" width={12} height={12} className="object-contain" />        <span className="font-semibold">Finder</span>
         <span className="opacity-80">File</span>
         <span className="opacity-80">Edit</span>
         <span className="opacity-80">View</span>
