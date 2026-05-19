@@ -104,7 +104,7 @@ function MobileFallback() {
         <div className="flex flex-col items-center text-center mb-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/profile.jpg"
+            src="/images/garden.jpg"
             alt="Lucy"
             className="w-24 h-24 rounded-full object-cover shadow-xl ring-4 ring-white mb-4"
           />
@@ -128,7 +128,7 @@ function MobileFallback() {
         <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
           <h2 className="font-semibold text-gray-700 mb-3">About</h2>
           <p className="text-sm text-gray-600 leading-relaxed">
-            I&apos;m a software engineer at Google on the Display Ads team. I studied CS & (almost) Visual Arts at Brown,
+            I&apos;m a software engineer at Google on the Display Ads team. I studied CS & Visual Arts at Brown,
             was Head TA for Data Structures & Algorithms, and took studio art classes at RISD.
             Outside work: gym, pilates, yoga, traveling, restaurants, art events.
           </p>

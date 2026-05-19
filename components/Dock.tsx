@@ -72,16 +72,16 @@ export default function Dock() {
 
   const items = [
     {
+      icon: '/icons/finder.png',
+      label: 'Projects',
+      onClick: () => { setProjectsFilter('all'); openWindow('projects') },
+      showDot: windows.projects.isMinimized,
+    },
+    {
       icon: '/icons/launchpad.png',
       label: 'Launchpad',
       onClick: () => openWindow('hero'),
       showDot: windows.hero.isMinimized,
-    },
-    {
-      icon: '🗂️',
-      label: 'Projects',
-      onClick: () => { setProjectsFilter('all'); openWindow('projects') },
-      showDot: windows.projects.isMinimized,
     },
     {
       icon: '/icons/imessage.png',

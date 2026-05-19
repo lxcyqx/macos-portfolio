@@ -7,8 +7,8 @@ const messages = [
   { text: "hi! i'm lucy 👋", delay: 0 },
   { text: "i'm a software engineer at Google on the Display Ads team, where I work on client-side rendering of ad formats 💻", delay: 0.15 },
   { text: "previously i did two SWE internships at Google and one at GivePulse 💼", delay: 0.3 },
-  { text: "at Brown, i was Head TA for Data Structures & Algorithms and basically *almost* got a Visual Arts degree — took tons of studio art classes including some at RISD 🎨", delay: 0.45 },
-  { text: "outside of work: gym, pilates, yoga, traveling, trying new restaurants, art events 🌍", delay: 0.6 },
+  { text: "at Brown, i was Head TA for Data Structures & Algorithms and also took a lot of studio art classes including some at RISD 🎨", delay: 0.45 },
+  { text: "outside of work: gym, pilates, yoga, taking an art course, trying new restaurants, and traveling 🌍", delay: 0.6 },
 ]
 
 export default function AboutWindow() {
