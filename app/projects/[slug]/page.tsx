@@ -7,6 +7,8 @@ import StepInternshipPage from '@/app/projects/_content/StepInternship'
 import ComputerGraphicsPage from '@/app/projects/_content/ComputerGraphics'
 import BookDepositoryRedesignPage from '@/app/projects/_content/BookDepositoryRedesign'
 import ABTestingPage from '@/app/projects/_content/ABTesting'
+import PersonasPage from '@/app/projects/_content/Personas'
+import FineArtPage from '@/app/projects/_content/FineArt'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -25,6 +27,22 @@ export default async function ProjectPage({ params }: Props) {
     return (
       <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
         <ComputerGraphicsPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'fine-art') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <FineArtPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'personas') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <PersonasPage />
       </WindowChrome>
     )
   }
