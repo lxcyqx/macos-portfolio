@@ -101,7 +101,7 @@ export default function Dock() {
       onClick: () => { window.location.href = 'mailto:lucyqu_@alumni.brown.edu' },
     },
     {
-      icon: '🗑️',
+      icon: '/icons/trashempty.png',
       label: 'Trash',
       onClick: () => {},
     },

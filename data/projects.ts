@@ -76,7 +76,7 @@ export const projects: Project[] = [
     displayTitle: 'Fine Art',
     subtitle: 'Oil, Monotype & Drawing',
     category: 'art',
-    year: '2020–2022',
+    year: '2020–2026',
     coverImage: '/images/fine-art/thumbnails/pagan.jpg',
     role: 'artist',
   },
