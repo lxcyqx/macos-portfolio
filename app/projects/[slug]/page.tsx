@@ -5,6 +5,8 @@ import Image from 'next/image'
 import IterativeDesignPage from '@/app/projects/_content/IterativeDesign'
 import StepInternshipPage from '@/app/projects/_content/StepInternship'
 import ComputerGraphicsPage from '@/app/projects/_content/ComputerGraphics'
+import BookDepositoryRedesignPage from '@/app/projects/_content/BookDepositoryRedesign'
+import ABTestingPage from '@/app/projects/_content/ABTesting'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -23,6 +25,22 @@ export default async function ProjectPage({ params }: Props) {
     return (
       <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
         <ComputerGraphicsPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'ab-testing') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <ABTestingPage />
+      </WindowChrome>
+    )
+  }
+
+  if (slug === 'book-depository-redesign') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <BookDepositoryRedesignPage />
       </WindowChrome>
     )
   }
