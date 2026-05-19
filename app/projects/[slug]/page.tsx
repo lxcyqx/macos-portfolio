@@ -4,6 +4,7 @@ import WindowChrome from '@/components/WindowChrome'
 import Image from 'next/image'
 import IterativeDesignPage from '@/app/projects/_content/IterativeDesign'
 import StepInternshipPage from '@/app/projects/_content/StepInternship'
+import ComputerGraphicsPage from '@/app/projects/_content/ComputerGraphics'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -17,6 +18,14 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params
   const project = projects.find((p) => p.slug === slug)
   if (!project) notFound()
+
+  if (slug === 'computer-graphics') {
+    return (
+      <WindowChrome title={`${project.displayTitle} — ${project.subtitle}`}>
+        <ComputerGraphicsPage />
+      </WindowChrome>
+    )
+  }
 
   if (slug === 'iterative-design') {
     return (

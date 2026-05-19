@@ -66,7 +66,7 @@ export default function IterativeDesignPage() {
         <p className="text-gray-700 leading-relaxed mb-4">
           We identified three distinct user types, each with a different flow through the app:
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="flex flex-col gap-4">
           <ProjectImage src="/images/projects/iterative/food_providers.jpg" alt="Food Providers flow" caption="Food Providers" />
           <ProjectImage src="/images/projects/iterative/volunteer.jpg" alt="Volunteer flow" caption="Volunteers" />
           <ProjectImage src="/images/projects/iterative/food_pantry.jpg" alt="Food Pantry flow" caption="Food Banks / NGOs" />
@@ -110,7 +110,7 @@ export default function IterativeDesignPage() {
       </Section>
 
       <Section title="Final Visual Design">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="flex flex-col gap-4">
           <ProjectImage src="/images/projects/iterative/food_supplier.gif" alt="Food supplier flow" caption="Food Supplier" />
           <ProjectImage src="/images/projects/iterative/volunteer.gif" alt="Volunteer flow" caption="Volunteer" />
           <ProjectImage src="/images/projects/iterative/ngo.gif" alt="NGO flow" caption="Food Bank / NGO" />
@@ -127,7 +127,7 @@ export default function IterativeDesignPage() {
         </p>
 
         <h3 className="font-semibold text-gray-700 mb-3 mt-5">Quantitative Metrics</h3>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="flex flex-col gap-4">
           <ProjectImage src="/images/projects/iterative/task1.jpg" alt="Task 1 metrics" caption="Task 1" />
           <ProjectImage src="/images/projects/iterative/task2.jpg" alt="Task 2 metrics" caption="Task 2" />
           <ProjectImage src="/images/projects/iterative/task3.jpg" alt="Task 3 metrics" caption="Task 3" />

@@ -16,6 +16,7 @@ export default function ProjectsWindow() {
 
   const filtered = projects.filter((p) => {
     if (projectsFilter === 'all') return true
+    if (projectsFilter === 'engineering') return p.category === 'engineering' || p.category === 'design'
     return p.category === projectsFilter
   })
 

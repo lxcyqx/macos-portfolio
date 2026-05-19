@@ -29,7 +29,7 @@ export default function HeroWindow() {
 
         {/* Name */}
         <h1 className="text-3xl font-bold text-gray-800 tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-          hi, i&apos;m lucy! 👋
+          hi, i&apos;m lucy!
         </h1>
 
         {/* Bio */}
