@@ -64,7 +64,7 @@ export default function HeroWindow() {
             href="mailto:lucyqu28@gmail.com"
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-rose-500 transition-colors"
           >
-            <Image src="/icons/gmail.png" alt="Email" width={14} height={14} unoptimized />
+            <Image src="/icons/email.png" alt="Email" width={14} height={14} unoptimized />
             Email
           </a>
         </div>
