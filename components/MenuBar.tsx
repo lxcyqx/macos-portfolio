@@ -35,7 +35,7 @@ export default function MenuBar() {
       {/* Right side */}
       <div className="flex items-center gap-3 text-white text-xs">
         {/* Wifi */}
-        <svg width="16" height="12" viewBox="0 0 20 15" fill="white" opacity="0.9">
+        <svg width="16" height="12" viewBox="0 -1.5 20 16.5" fill="white" opacity="0.9">
           <path d="M10 12.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
           <path d="M6.5 9.5a4.97 4.97 0 017 0" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round" />
           <path d="M3 6.5a9 9 0 0114 0" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round" />
