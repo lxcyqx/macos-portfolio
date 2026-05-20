@@ -36,10 +36,10 @@ function DockItem({ icon, label, onClick, mouseX, href, showDot }: DockItemProps
       className="relative flex flex-col items-center group cursor-pointer"
       onClick={onClick}
     >
-      <div className="w-12 h-12 flex items-center justify-center drop-shadow-lg select-none">
+      <div className="w-16 h-16 flex items-center justify-center drop-shadow-lg select-none">
         {isImage
           ? <img src={icon} alt={label} className="w-full h-full object-contain" />
-          : <span className="text-3xl">{icon}</span>
+          : <span className="text-4xl">{icon}</span>
         }
       </div>
       {/* Tooltip label */}
@@ -112,7 +112,7 @@ export default function Dock() {
       <motion.div
         onMouseMove={(e) => mouseX.set(e.clientX)}
         onMouseLeave={() => mouseX.set(Infinity)}
-        className="flex items-end gap-2 px-4 py-2 bg-white/10 backdrop-blur-2xl rounded-2xl border border-white/20 shadow-2xl"
+        className="flex items-end gap-3 px-5 py-3 bg-white/10 backdrop-blur-2xl rounded-2xl border border-white/20 shadow-2xl"
       >
         {items.map((item, i) => (
           <DockItem
