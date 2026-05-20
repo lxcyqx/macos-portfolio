@@ -6,7 +6,7 @@ import { projects } from '@/data/projects'
 import { useWindowStore } from '@/store/windowStore'
 
 const sidebar = [
-  { label: 'All Projects', filter: 'all', icon: '📂' },
+  { label: 'All Projects', filter: 'all', icon: '/icons/macos-folder.png' },
   { label: 'Engineering & Design', filter: 'engineering', icon: '⚙️' },
   { label: 'Art & Illustration', filter: 'art', icon: '🖼️' },
 ]
@@ -43,7 +43,12 @@ export default function ProjectsWindow() {
                   ? 'bg-blue-500 text-white'
                   : 'text-gray-600 hover:bg-gray-200/70'}`}
             >
-              <span>{item.icon}</span>
+              <span>
+              {item.icon.startsWith('/')
+                ? <img src={item.icon} alt={item.label} width={14} height={14} className="object-contain" />
+                : item.icon
+              }
+            </span>
               <span className="leading-tight">{item.label}</span>
             </button>
           ))}
