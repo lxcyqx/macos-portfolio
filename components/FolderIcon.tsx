@@ -48,7 +48,7 @@ export default function FolderIcon({ label, onClick, previewImages = [] }: Folde
                      group-hover:scale-110 transition-transform duration-150"
           style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}
         >
-        <img src="/icons/macos-folder.png" alt="GitHub"/>
+        <img src="/icons/macos-folder.png" alt="Folder"/>
         </div>
       </div>
       <span

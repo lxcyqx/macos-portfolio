@@ -110,19 +110,19 @@ function MobileFallback() {
             alt="Lucy"
             className="w-24 h-24 rounded-full object-cover shadow-xl ring-4 ring-white mb-4"
           />
-          <h1 className="text-2xl font-bold text-gray-800" style={{ fontFamily: 'Georgia, serif' }}>
-            hi, i&apos;m lucy! 👋
+          <h1 className="text-2xl font-bold text-gray-800">
+            hi, i&apos;m lucy!
           </h1>
           <p className="text-gray-500 text-sm mt-1">software engineer at Google</p>
-          <p className="text-gray-400 text-xs mt-0.5">Brown &apos;22 · Display Ads · part-time artist</p>
+          <p className="text-gray-400 text-xs mt-0.5">Brown &apos;22</p>
 
           <div className="flex items-center gap-4 mt-4">
             <a href="https://www.linkedin.com/in/lucyqu/" target="_blank" rel="noopener noreferrer"
-               className="text-sm text-blue-600 hover:underline font-medium">LinkedIn</a>
+               className="text-sm text-gray-500 hover:underline font-medium">LinkedIn</a>
             <a href="https://github.com/lxcyqx" target="_blank" rel="noopener noreferrer"
-               className="text-sm text-gray-700 hover:underline font-medium">GitHub</a>
+               className="text-sm text-gray-500 hover:underline font-medium">GitHub</a>
             <a href="mailto:lucyqu28@gmail.com"
-               className="text-sm text-rose-500 hover:underline font-medium">Email</a>
+               className="text-sm text-gray-500 hover:underline font-medium">Email</a>
           </div>
         </div>
 
@@ -131,8 +131,12 @@ function MobileFallback() {
           <h2 className="font-semibold text-gray-700 mb-3">About</h2>
           <p className="text-sm text-gray-600 leading-relaxed">
             I&apos;m a software engineer at Google on the Display Ads team. I studied CS & Visual Arts at Brown,
-            was Head TA for Data Structures & Algorithms, and took studio art classes at RISD.
+            was a CS TA for three semesters, and took many studio art classes, including some at RISD.
             Outside work: gym, pilates, yoga, traveling, restaurants, art events.
+          </p>
+          <br></br>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            For the best viewing experience, open this website on a desktop.
           </p>
         </div>
 
@@ -154,7 +158,7 @@ function MobileFallback() {
             ].map(({ slug, label }) => (
               <a key={slug} href={`/projects/${slug}`}
                  className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow flex items-center gap-3">
-                <span className="text-lg">📁</span>
+                <img src="/icons/macos-folder.png" width={18} height={18} alt="Folder"/>
                 <p className="text-sm font-medium text-gray-800">{label}</p>
               </a>
             ))}

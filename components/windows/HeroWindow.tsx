@@ -28,7 +28,7 @@ export default function HeroWindow() {
         </div>
 
         {/* Name */}
-        <h1 className="text-3xl font-bold text-gray-800 tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+        <h1 className="text-3xl font-bold text-gray-800 tracking-tight">
           hi, i&apos;m lucy!
         </h1>
 
