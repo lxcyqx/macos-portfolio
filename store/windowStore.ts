@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type WindowId = 'hero' | 'projects' | 'about' | 'resume'
+export type WindowId = 'hero' | 'projects' | 'about' | 'resume' | 'spotify'
 
 interface WindowState {
   isOpen: boolean
@@ -26,6 +26,7 @@ const defaultWindows: Record<WindowId, WindowState> = {
   projects: { isOpen: false, isMinimized: false, isMaximized: false, zIndex: 10 },
   about: { isOpen: false, isMinimized: false, isMaximized: false, zIndex: 10 },
   resume: { isOpen: false, isMinimized: false, isMaximized: false, zIndex: 10 },
+  spotify: { isOpen: false, isMinimized: false, isMaximized: false, zIndex: 10 },
 }
 
 export const useWindowStore = create<WindowStore>((set, get) => ({

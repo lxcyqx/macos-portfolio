@@ -101,6 +101,12 @@ export default function Dock() {
       onClick: () => { window.location.href = 'mailto:lucyqu_@alumni.brown.edu' },
     },
     {
+      icon: '/icons/spotify.png',
+      label: 'Spotify',
+      onClick: () => openWindow('spotify'),
+      showDot: windows.spotify.isMinimized,
+    },
+    {
       icon: '/icons/trashempty.png',
       label: 'Trash',
       onClick: () => {},

@@ -7,6 +7,7 @@ import HeroWindow from '@/components/windows/HeroWindow'
 import ProjectsWindow from '@/components/windows/ProjectsWindow'
 import AboutWindow from '@/components/windows/AboutWindow'
 import ResumeWindow from '@/components/windows/ResumeWindow'
+import SpotifyWindow from '@/components/windows/SpotifyWindow'
 import { useWindowStore } from '@/store/windowStore'
 
 export default function Desktop() {
@@ -83,6 +84,7 @@ export default function Desktop() {
         <ProjectsWindow />
         <AboutWindow />
         <ResumeWindow />
+        <SpotifyWindow />
       </div>
 
       {/* Dock — hidden on mobile */}
