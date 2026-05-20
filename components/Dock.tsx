@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { useWindowStore, WindowId } from '@/store/windowStore'
 
@@ -66,8 +67,13 @@ function DockItem({ icon, label, onClick, mouseX, href, showDot }: DockItemProps
   return content
 }
 
-export default function Dock() {
+interface DockProps {
+  context?: 'desktop' | 'project-page'
+}
+
+export default function Dock({ context = 'desktop' }: DockProps) {
   const mouseX = useMotionValue(Infinity)
+  const router = useRouter()
   const { windows, openWindow, setProjectsFilter } = useWindowStore()
 
   const items = [
@@ -80,8 +86,8 @@ export default function Dock() {
     {
       icon: '/icons/launchpad.png',
       label: 'Launchpad',
-      onClick: () => openWindow('hero'),
-      showDot: windows.hero.isMinimized,
+      onClick: context === 'project-page' ? () => router.push('/') : () => openWindow('hero'),
+      showDot: context === 'desktop' ? windows.hero.isMinimized : false,
     },
     {
       icon: '/icons/imessage.png',

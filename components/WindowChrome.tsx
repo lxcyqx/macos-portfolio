@@ -1,6 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Dock from '@/components/Dock'
+import ProjectsWindow from '@/components/windows/ProjectsWindow'
+import AboutWindow from '@/components/windows/AboutWindow'
 
 interface WindowChromeProps {
   title: string
@@ -35,10 +38,14 @@ export default function WindowChrome({ title, children }: WindowChromeProps) {
         </Link>
       </div>
 
-      {/* Page content */}
-      <div className="bg-white min-h-[calc(100vh-36px)]">
+      {/* Page content — pb-28 ensures content clears the fixed dock */}
+      <div className="bg-white min-h-[calc(100vh-36px)] pb-28">
         {children}
       </div>
+
+      <ProjectsWindow />
+      <AboutWindow />
+      <Dock context="project-page" />
     </div>
   )
 }
