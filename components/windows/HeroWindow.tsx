@@ -10,9 +10,9 @@ export default function HeroWindow() {
       title="lucy qu — home"
       defaultPosition={{ x: typeof window !== 'undefined' ? window.innerWidth / 2 - 280 : 300, y: 60 }}
       minWidth={520}
-      minHeight={360}
+      minHeight={400}
     >
-      <div className="flex flex-col items-center justify-center h-full min-h-[360px] px-10 py-10 text-center bg-gradient-to-br from-purple-50/80 via-white/90 to-blue-50/80">
+      <div className="flex flex-col items-center justify-center h-full min-h-[360px] px-10 py-10 text-center bg-gradient-to-br from-purple-50/80 via-white/90 to-blue-50/80 overflow-hidden">
         {/* Avatar */}
         <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-xl mb-5">
           <Image
