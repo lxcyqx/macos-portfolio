@@ -20,7 +20,7 @@ export default function AboutWindow() {
       minWidth={500}
       minHeight={460}
     >
-      <div className="flex flex-col h-full min-h-[460px] bg-gray-50/80">
+      <div className="flex flex-col min-h-[460px] bg-gray-50/80">
         {/* Messages header */}
         <div className="flex flex-col items-center py-5 border-b border-gray-200/60 bg-white/60 flex-shrink-0">
           <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white text-xl font-bold shadow-md mb-2">
@@ -31,7 +31,7 @@ export default function AboutWindow() {
         </div>
 
         {/* Chat bubbles */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-2">
+        <div className="px-4 py-4 flex flex-col gap-2">
           {messages.map((msg, i) => (
             <motion.div
               key={i}

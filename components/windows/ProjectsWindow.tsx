@@ -28,9 +28,9 @@ export default function ProjectsWindow() {
       minWidth={720}
       minHeight={480}
     >
-      <div className="flex h-full min-h-[480px]">
+      <div className="flex min-h-[480px]">
         {/* Sidebar */}
-        <div className="w-44 flex-shrink-0 bg-gray-50/90 border-r border-gray-200/60 pt-3 pb-4 px-2">
+        <div className="w-44 flex-shrink-0 bg-gray-50/90 border-r border-gray-200/60 pt-3 pb-4 px-2 sticky top-0 self-start">
           <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest px-2 mb-2">
             Favorites
           </p>
@@ -50,7 +50,7 @@ export default function ProjectsWindow() {
         </div>
 
         {/* Main content */}
-        <div className="flex-1 overflow-y-auto p-4">
+        <div className="flex-1 p-4">
           <div className="grid grid-cols-2 gap-3">
             {filtered.map((project) => (
               <ProjectCard key={project.slug} project={project} />
