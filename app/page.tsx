@@ -61,9 +61,8 @@ export default function Desktop() {
       {/* Menu Bar */}
       <MenuBar />
 
-      {/* Desktop area — hidden on mobile */}
+      {/* Desktop folder icons — hidden on mobile */}
       <div className="hidden md:block fixed inset-0 pt-7 pb-20 overflow-hidden">
-        {/* Folder Icons */}
         {folderIcons.map((folder) => (
           <div
             key={folder.label}
@@ -77,8 +76,11 @@ export default function Desktop() {
             />
           </div>
         ))}
+      </div>
 
-        {/* Windows */}
+      {/* Windows — outside the overflow-hidden container so they share the body
+          stacking context with SpotifyWindow in the layout, enabling correct z-index ordering */}
+      <div className="hidden md:block">
         <HeroWindow />
         <ProjectsWindow />
         <AboutWindow />
