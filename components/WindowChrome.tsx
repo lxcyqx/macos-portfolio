@@ -39,13 +39,15 @@ export default function WindowChrome({ title, children }: WindowChromeProps) {
       </div>
 
       {/* Page content — pb-28 ensures content clears the fixed dock */}
-      <div className="bg-white min-h-[calc(100vh-36px)] pb-28">
+      <div className="bg-white min-h-[calc(100vh-36px)] md:pb-28">
         {children}
       </div>
 
       <ProjectsWindow />
       <AboutWindow />
-      <Dock context="project-page" />
+      <div className="hidden md:block">
+        <Dock context="project-page" />
+      </div>
     </div>
   )
 }
