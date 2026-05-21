@@ -82,7 +82,7 @@ export default function ProudHousePage() {
           <p className="text-gray-700 leading-relaxed">
             Proud House is a concept merch brand celebrating LGBTQ+ identity and community. The project explores
             a playful visual language built around a cast of expressive heart characters — each design capturing
-            a sense of joy, pride, and playfullness. The work spans brand identity, illustration, and product design. I never quite made it to actually launching the brand but if you would like to see me do that, message me ;)
+            a sense of joy, pride, and belonging. The work spans brand identity, illustration, and product design. I never quite made it to actually launching the brand but if you would like to see me do that, message me ;)
           </p>
         </div>
 
