@@ -1,9 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import { useLayoutEffect } from 'react'
 import Dock from '@/components/Dock'
 import ProjectsWindow from '@/components/windows/ProjectsWindow'
 import AboutWindow from '@/components/windows/AboutWindow'
+import { useWindowStore } from '@/store/windowStore'
 
 interface WindowChromeProps {
   title: string
@@ -11,6 +13,14 @@ interface WindowChromeProps {
 }
 
 export default function WindowChrome({ title, children }: WindowChromeProps) {
+  const { pageZ, initProjectPage, bringPageToFront } = useWindowStore()
+
+  // Runs synchronously before the browser paints, so there is no visible flash
+  // even if the store has stale state from prior desktop interactions.
+  useLayoutEffect(() => {
+    initProjectPage()
+  }, [initProjectPage])
+
   return (
     <div className="min-h-screen bg-gray-100/50">
       {/* Decorative title bar */}
@@ -38,8 +48,16 @@ export default function WindowChrome({ title, children }: WindowChromeProps) {
         </Link>
       </div>
 
-      {/* Page content — pb-28 ensures content clears the fixed dock */}
-      <div className="bg-white min-h-[calc(100vh-36px)] md:pb-28">
+      {/* Page content — pb-28 ensures content clears the fixed dock.
+          zIndex tracks pageZ from the store:
+            - initProjectPage sets it above every current window on mount
+            - openWindow/focusWindow leapfrog it for one specific window
+            - bringPageToFront (onMouseDown) reclaims the top */}
+      <div
+        className="relative bg-white min-h-[calc(100vh-36px)] md:pb-28"
+        style={{ zIndex: pageZ }}
+        onMouseDown={() => bringPageToFront()}
+      >
         {children}
       </div>
 

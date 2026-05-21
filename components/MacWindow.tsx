@@ -119,6 +119,8 @@ export default function MacWindow({
           onMouseDown={handleFocus}
           style={{
             position: 'fixed',
+            top: 0,
+            left: 0,
             x: isMaximized ? 0 : posX,
             y: isMaximized ? 28 : posY,
             zIndex: win.zIndex,
