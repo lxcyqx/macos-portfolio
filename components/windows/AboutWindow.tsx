@@ -21,6 +21,11 @@ const QA = [
 
 type Message = { type: 'question' | 'answer'; index: number }
 
+// Shared spring config for all chat bubbles
+const spring = { type: 'spring' as const, stiffness: 340, damping: 28 }
+const bubbleInit = { opacity: 0, y: 10, scale: 0.97 }
+const bubbleShow = { opacity: 1, y: 0, scale: 1 }
+
 const Avatar = () => (
   <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
     L
@@ -47,31 +52,50 @@ function TypingIndicator() {
 
 export default function AboutWindow() {
   const [messages, setMessages] = useState<Message[]>([])
-  const [isTyping, setIsTyping] = useState(false)
+  // pendingAnswer: true from question click until question buttons should reappear.
+  // showTyping: true only for the typing-indicator window (delayed after question).
+  // Keeping them separate lets the question bubble animate in before the typing
+  // indicator appears, avoiding the "everything at once" jumpiness.
+  const [pendingAnswer, setPendingAnswer] = useState(false)
+  const [showTyping, setShowTyping] = useState(false)
   const [askedIndices, setAskedIndices] = useState<Set<number>>(new Set())
   const bottomRef = useRef<HTMLDivElement>(null)
 
   const remainingIndices = QA.map((_, i) => i).filter((i) => !askedIndices.has(i))
   const allAnswered = remainingIndices.length === 0
-  // Only true once every answer bubble has actually been added to messages —
-  // askedIndices updates immediately on click, answers only after the timeout.
   const allAnswersShown = messages.filter((m) => m.type === 'answer').length === QA.length
-  const showQuestions = !isTyping && !allAnswered
+  const showQuestions = !pendingAnswer && !allAnswered
 
   const handleSelect = (index: number) => {
-    if (isTyping) return
+    if (pendingAnswer) return
+
+    // Step 1 (t=0): question bubble in, question buttons out
     setMessages((prev) => [...prev, { type: 'question', index }])
     setAskedIndices((prev) => new Set([...prev, index]))
-    setIsTyping(true)
-    setTimeout(() => {
-      setIsTyping(false)
+    setPendingAnswer(true)
+
+    // Step 2 (t=280ms): typing indicator in — question bubble has finished animating
+    const t1 = setTimeout(() => setShowTyping(true), 280)
+
+    // Step 3 (t=1050ms): typing out, answer in
+    const t2 = setTimeout(() => {
+      setShowTyping(false)
       setMessages((prev) => [...prev, { type: 'answer', index }])
-    }, 900)
+    }, 1050)
+
+    // Step 4 (t=1220ms): remaining question buttons in — slight pause after answer
+    const t3 = setTimeout(() => setPendingAnswer(false), 1220)
+
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, isTyping])
+    const t = setTimeout(
+      () => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }),
+      60,
+    )
+    return () => clearTimeout(t)
+  }, [messages, showTyping, pendingAnswer])
 
   return (
     <MacWindow
@@ -93,7 +117,7 @@ export default function AboutWindow() {
 
         {/* Chat area */}
         <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 flex flex-col gap-3">
-          {/* Intro bubbles from Lucy */}
+          {/* Intro bubbles */}
           {[
             "hi! i'm lucy 👋",
             "i'm a software engineer at Google on the Display Ads team, where I work on client-side rendering of ad formats 💻",
@@ -102,9 +126,9 @@ export default function AboutWindow() {
           ].map((text, i, arr) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15, duration: 0.2 }}
+              initial={bubbleInit}
+              animate={bubbleShow}
+              transition={{ ...spring, delay: i * 0.12 }}
               className="flex items-end gap-2"
             >
               {i === arr.length - 1 ? <Avatar /> : <div className="w-6 h-6 flex-shrink-0" />}
@@ -118,9 +142,9 @@ export default function AboutWindow() {
           {messages.map((msg, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2 }}
+              initial={bubbleInit}
+              animate={bubbleShow}
+              transition={spring}
               className={`flex items-end gap-2 ${msg.type === 'question' ? 'justify-end' : ''}`}
             >
               {msg.type === 'answer' && <Avatar />}
@@ -138,12 +162,12 @@ export default function AboutWindow() {
 
           {/* Typing indicator */}
           <AnimatePresence>
-            {isTyping && (
+            {showTyping && (
               <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.15 }}
+                initial={bubbleInit}
+                animate={bubbleShow}
+                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
+                transition={spring}
               >
                 <TypingIndicator />
               </motion.div>
@@ -154,8 +178,9 @@ export default function AboutWindow() {
           <AnimatePresence>
             {allAnswersShown && (
               <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={bubbleInit}
+                animate={bubbleShow}
+                transition={spring}
                 className="flex items-end gap-2"
               >
                 <Avatar />
@@ -171,10 +196,10 @@ export default function AboutWindow() {
             {showQuestions && (
               <motion.div
                 key={`q-${askedIndices.size}`}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, transition: { duration: 0.18 } }}
+                transition={{ ...spring, delay: askedIndices.size > 0 ? 0.05 : 0 }}
                 className="flex flex-col gap-2 mt-1"
               >
                 <p className="text-xs text-gray-400 text-center">choose a question</p>
