@@ -34,12 +34,6 @@ export default function Desktop() {
       onClick: () => { setProjectsFilter('art'); openWindow('projects') },
     },
     {
-      label: 'Resume',
-      position: { top: '50%', left: '76%' },
-      previewImages: [],
-      onClick: () => openWindow('resume'),
-    },
-    {
       label: 'About Me',
       position: { top: '62%', left: '80%' },
       previewImages: ['/images/garden.jpg'],
