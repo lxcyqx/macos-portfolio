@@ -8,7 +8,7 @@ const messages = [
   { text: "i'm a software engineer at Google on the Display Ads team, where I work on client-side rendering of ad formats 💻", delay: 0.15 },
   { text: "previously i did two SWE internships at Google and one at GivePulse 💼", delay: 0.3 },
   { text: "at Brown, i was CS TA for three semesters and also took a lot of studio art classes including some at RISD 🎨", delay: 0.45 },
-  { text: "outside of work: gym, pilates, yoga, taking an art course, trying new restaurants, and traveling 🌍", delay: 0.6 },
+  { text: "outside of work: gym, pilates, yoga, taking art classes, trying new restaurants, and traveling 🌍", delay: 0.6 },
 ]
 
 export default function AboutWindow() {
