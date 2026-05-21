@@ -207,7 +207,7 @@ export default function AboutWindow() {
                   <button
                     key={i}
                     onClick={() => handleSelect(i)}
-                    className="text-left text-sm text-[#1D7CF2] border border-[#1D7CF2]/40 rounded-full px-4 py-2 hover:bg-[#1D7CF2]/5 transition-colors leading-snug"
+                    className="self-end text-right text-sm text-[#1D7CF2] border border-[#1D7CF2]/40 rounded-full px-4 py-2 hover:bg-[#1D7CF2]/5 transition-colors leading-snug"
                   >
                     {QA[i].question}
                   </button>
