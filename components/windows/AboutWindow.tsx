@@ -53,6 +53,9 @@ export default function AboutWindow() {
 
   const remainingIndices = QA.map((_, i) => i).filter((i) => !askedIndices.has(i))
   const allAnswered = remainingIndices.length === 0
+  // Only true once every answer bubble has actually been added to messages —
+  // askedIndices updates immediately on click, answers only after the timeout.
+  const allAnswersShown = messages.filter((m) => m.type === 'answer').length === QA.length
   const showQuestions = !isTyping && !allAnswered
 
   const handleSelect = (index: number) => {
@@ -149,7 +152,7 @@ export default function AboutWindow() {
 
           {/* All questions answered */}
           <AnimatePresence>
-            {allAnswered && (
+            {allAnswersShown && (
               <motion.div
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
