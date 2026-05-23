@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "lucy qu — portfolio",
   description: "Software engineer at Google. Brown '22.",
   icons: {
-    icon: '/images/logo.png',
+    icon: '/images/checkered_favicon.png',
   },
 }
 
