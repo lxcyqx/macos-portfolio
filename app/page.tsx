@@ -158,7 +158,7 @@ function MobileFallback() {
         <div className="border-b border-gray-100 px-4 py-3 flex items-start gap-3">
           <span className="mt-0.5 text-base leading-none">📌</span>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-sm" style={{ color: '#1C1C1E' }}>about me</p>
+            <p className="font-semibold text-sm" style={{ color: '#1C1C1E' }}>lucy qu - about me</p>
             <p className="text-xs mt-0.5" style={{ color: '#8E8E93' }}>
               software engineer at Google · Brown &apos;22
             </p>
