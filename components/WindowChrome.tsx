@@ -22,25 +22,19 @@ export default function WindowChrome({ title, children }: WindowChromeProps) {
   }, [initProjectPage])
 
   return (
-    <div className="min-h-screen bg-[#FAF9F4] md:bg-gray-100/50">
+    <div className="min-h-screen bg-white md:bg-gray-100/50">
       {/* Mobile Notes header */}
-      <div
-        className="md:hidden sticky top-0 z-50 flex items-center h-12 px-4 shadow-sm"
-        style={{ background: 'linear-gradient(180deg, #FFD60A 0%, #F5C400 100%)' }}
-      >
+      <div className="md:hidden sticky top-0 z-50 flex items-center h-14 px-4 bg-white border-b border-gray-100">
         <Link
           href="/"
           className="flex items-center gap-0.5 z-10"
-          style={{ color: '#1C1C1E', textDecoration: 'none', fontSize: 15, fontWeight: 500 }}
+          style={{ color: '#007AFF', textDecoration: 'none', fontSize: 15 }}
         >
           <span style={{ fontSize: 22, lineHeight: 1, marginRight: 2 }}>‹</span>
           Notes
         </Link>
         <div className="absolute inset-x-0 flex justify-center pointer-events-none">
-          <span
-            className="truncate px-20 text-sm font-semibold"
-            style={{ color: '#1C1C1E' }}
-          >
+          <span className="truncate px-24 text-sm font-semibold" style={{ color: '#1C1C1E' }}>
             {title.split(' — ')[0]}
           </span>
         </div>
@@ -77,7 +71,7 @@ export default function WindowChrome({ title, children }: WindowChromeProps) {
             - openWindow/focusWindow leapfrog it for one specific window
             - bringPageToFront (onMouseDown) reclaims the top */}
       <div
-        className="relative bg-[#FAF9F4] md:bg-white min-h-[calc(100vh-36px)] md:pb-28"
+        className="relative bg-white min-h-[calc(100vh-36px)] md:pb-28"
         style={{ zIndex: pageZ }}
         onMouseDown={() => bringPageToFront()}
       >

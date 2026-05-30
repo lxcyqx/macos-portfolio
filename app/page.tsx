@@ -93,123 +93,115 @@ export default function Desktop() {
   )
 }
 
+const PROJECT_EMOJIS: Record<string, string> = {
+  'computer-graphics': '🌲',
+  'step-internship': '💼',
+  'proud-house': '🏠',
+  'iterative-design': '✏️',
+  'book-depository-redesign': '📚',
+  'ab-testing': '📊',
+  'personas': '🎭',
+  'fine-art': '🎨',
+  'digital-illustration': '🖼️',
+  'animation': '🎬',
+  'architecture': '🏛️',
+}
+
+function NoteRow({ href, emoji, title, year, subtitle }: {
+  href: string; emoji: string; title: string; year: string; subtitle: string
+}) {
+  return (
+    <a href={href} className="flex items-start gap-3 px-4 py-3" style={{ textDecoration: 'none' }}>
+      <span className="mt-0.5 text-base leading-none">{emoji}</span>
+      <div className="flex-1 min-w-0">
+        <p className="font-semibold text-sm truncate" style={{ color: '#1C1C1E' }}>{title}</p>
+        <p className="text-xs mt-0.5 truncate">
+          <span style={{ color: '#1C1C1E' }}>{year}</span>
+          <span style={{ color: '#8E8E93' }}>{'  '}{subtitle}</span>
+        </p>
+      </div>
+    </a>
+  )
+}
+
+function SectionLabel({ label }: { label: string }) {
+  return (
+    <p className="px-4 pt-5 pb-1 text-xs font-semibold" style={{ color: '#8E8E93' }}>{label}</p>
+  )
+}
+
 function MobileFallback() {
   const engineeringDesign = projects.filter((p) => p.category !== 'art')
   const art = projects.filter((p) => p.category === 'art')
 
   return (
     <div
-      className="md:hidden fixed inset-0 z-[99999] flex flex-col"
-      style={{
-        background: '#FAF9F4',
-        fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-      }}
+      className="md:hidden fixed inset-0 z-[99999] flex flex-col bg-white"
+      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif" }}
     >
-      {/* Notes yellow header */}
-      <div
-        className="flex-none flex items-center justify-center h-12 shadow-sm"
-        style={{ background: 'linear-gradient(180deg, #FFD60A 0%, #F5C400 100%)' }}
-      >
-        <span className="text-base font-bold" style={{ color: '#1C1C1E' }}>Lucy Qu</span>
+      {/* Header — traffic lights + title */}
+      <div className="flex-none flex items-center justify-between px-4 h-14 border-b border-gray-100">
+        <div className="flex items-center gap-1.5">
+          <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+          <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+          <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+        </div>
+        <span className="text-sm font-semibold" style={{ color: '#1C1C1E' }}>Notes</span>
+        <div className="w-12" />
       </div>
 
-      {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#FAF9F4' }}>
-        <div className="py-6 px-5">
+      {/* List */}
+      <div className="flex-1 overflow-y-auto">
 
-          {/* Name + role */}
-          <h1 className="font-semibold mb-0.5" style={{ fontSize: 20, color: '#1C1C1E' }}>Lucy Qu</h1>
-          <p className="mb-4" style={{ fontSize: 12, color: '#8E8E93' }}>
-            Software Engineer · Google · Brown &apos;22
-          </p>
-
-          {/* Social links */}
-          <div className="flex gap-5 mb-6">
-            <a
-              href="https://www.linkedin.com/in/lucyqu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: '#007AFF', fontSize: 14, textDecoration: 'none' }}
-            >LinkedIn</a>
-            <a
-              href="https://github.com/lxcyqx"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: '#007AFF', fontSize: 14, textDecoration: 'none' }}
-            >GitHub</a>
-            <a
-              href="mailto:lucyqu28@gmail.com"
-              style={{ color: '#007AFF', fontSize: 14, textDecoration: 'none' }}
-            >Email</a>
+        {/* Pinned */}
+        <SectionLabel label="Pinned" />
+        <div className="border-b border-gray-100 px-4 py-3 flex items-start gap-3">
+          <span className="mt-0.5 text-base leading-none">📌</span>
+          <div className="flex-1 min-w-0">
+            <p className="font-semibold text-sm" style={{ color: '#1C1C1E' }}>about me</p>
+            <p className="text-xs mt-0.5" style={{ color: '#8E8E93' }}>
+              software engineer at Google · Brown &apos;22
+            </p>
+            <div className="flex gap-4 mt-2">
+              <a href="https://www.linkedin.com/in/lucyqu/" target="_blank" rel="noopener noreferrer"
+                 className="text-xs" style={{ color: '#007AFF', textDecoration: 'none' }}>LinkedIn</a>
+              <a href="https://github.com/lxcyqx" target="_blank" rel="noopener noreferrer"
+                 className="text-xs" style={{ color: '#007AFF', textDecoration: 'none' }}>GitHub</a>
+              <a href="mailto:lucyqu28@gmail.com"
+                 className="text-xs" style={{ color: '#007AFF', textDecoration: 'none' }}>Email</a>
+            </div>
           </div>
-
-          <hr style={{ borderColor: '#E5E5EA', marginBottom: 20 }} />
-
-          {/* About */}
-          <h2 className="font-semibold mb-2" style={{ fontSize: 18, color: '#1C1C1E' }}>About</h2>
-          <p className="mb-6" style={{ fontSize: 15, color: '#3C3C43', lineHeight: 1.7 }}>
-            I&apos;m a software engineer at Google on the Display Ads team. I studied CS &amp; Visual Arts
-            at Brown, was a CS TA for three semesters, and took many studio art classes, including some
-            at RISD. Outside work: gym, pilates, yoga, traveling, restaurants, art events.
-          </p>
-
-          <hr style={{ borderColor: '#E5E5EA', marginBottom: 20 }} />
-
-          {/* Engineering & Design */}
-          <h2 className="font-semibold mb-3" style={{ fontSize: 18, color: '#1C1C1E' }}>
-            Engineering &amp; Design
-          </h2>
-          <div className="overflow-hidden" style={{ borderRadius: 12, background: '#F2F2F7' }}>
-            {engineeringDesign.map((project, i) => (
-              <div key={project.slug}>
-                <a
-                  href={`/projects/${project.slug}`}
-                  className="flex items-center gap-3 px-4 py-3"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <span className="flex-1" style={{ fontSize: 15, color: '#1C1C1E' }}>
-                    {project.displayTitle}
-                  </span>
-                  <span style={{ fontSize: 20, color: '#C7C7CC' }}>›</span>
-                </a>
-                {i < engineeringDesign.length - 1 && (
-                  <div style={{ height: 1, background: '#E5E5EA', marginLeft: 44 }} />
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div style={{ height: 24 }} />
-          <hr style={{ borderColor: '#E5E5EA', marginBottom: 20 }} />
-
-          {/* Art & Illustration */}
-          <h2 className="font-semibold mb-3" style={{ fontSize: 18, color: '#1C1C1E' }}>
-            Art &amp; Illustration
-          </h2>
-          <div className="overflow-hidden" style={{ borderRadius: 12, background: '#F2F2F7' }}>
-            {art.map((project, i) => (
-              <div key={project.slug}>
-                <a
-                  href={`/projects/${project.slug}`}
-                  className="flex items-center gap-3 px-4 py-3"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <span className="flex-1" style={{ fontSize: 15, color: '#1C1C1E' }}>
-                    {project.displayTitle}
-                  </span>
-                  <span style={{ fontSize: 20, color: '#C7C7CC' }}>›</span>
-                </a>
-                {i < art.length - 1 && (
-                  <div style={{ height: 1, background: '#E5E5EA', marginLeft: 44 }} />
-                )}
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center pb-8" style={{ fontSize: 12, color: '#8E8E93' }}>
-            Open on desktop for the full experience ✦
-          </p>
         </div>
+
+        {/* Engineering & Design */}
+        <SectionLabel label="Engineering & Design" />
+        {engineeringDesign.map((project, i) => (
+          <div key={project.slug} className={i < engineeringDesign.length - 1 ? 'border-b border-gray-100' : ''}>
+            <NoteRow
+              href={`/projects/${project.slug}`}
+              emoji={PROJECT_EMOJIS[project.slug] ?? '📄'}
+              title={project.displayTitle}
+              year={project.year}
+              subtitle={project.subtitle}
+            />
+          </div>
+        ))}
+
+        {/* Art & Illustration */}
+        <SectionLabel label="Art & Illustration" />
+        {art.map((project, i) => (
+          <div key={project.slug} className={i < art.length - 1 ? 'border-b border-gray-100' : ''}>
+            <NoteRow
+              href={`/projects/${project.slug}`}
+              emoji={PROJECT_EMOJIS[project.slug] ?? '📄'}
+              title={project.displayTitle}
+              year={project.year}
+              subtitle={project.subtitle}
+            />
+          </div>
+        ))}
+
+        <div className="pb-12" />
       </div>
     </div>
   )

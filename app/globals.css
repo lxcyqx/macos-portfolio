@@ -32,10 +32,10 @@ body {
   cursor: grabbing;
 }
 
-/* Mobile: Notes-style cream background */
+/* Mobile: Notes-style white background */
 @media (max-width: 767px) {
   body {
-    background-color: #FAF9F4;
-    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
   }
 }
