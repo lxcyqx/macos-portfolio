@@ -8,6 +8,7 @@ import ProjectsWindow from '@/components/windows/ProjectsWindow'
 import AboutWindow from '@/components/windows/AboutWindow'
 import ResumeWindow from '@/components/windows/ResumeWindow'
 import { useWindowStore } from '@/store/windowStore'
+import { projects } from '@/data/projects'
 
 export default function Desktop() {
   const { openWindow, setProjectsFilter } = useWindowStore()
@@ -93,70 +94,121 @@ export default function Desktop() {
 }
 
 function MobileFallback() {
+  const engineeringDesign = projects.filter((p) => p.category !== 'art')
+  const art = projects.filter((p) => p.category === 'art')
+
   return (
-    <div className="md:hidden fixed inset-0 bg-gradient-to-br from-purple-100 via-white to-blue-100 overflow-y-auto z-[99999]">
-      <div className="max-w-md mx-auto px-5 py-10">
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/garden.jpg"
-            alt="Lucy"
-            className="w-24 h-24 rounded-full object-cover shadow-xl ring-4 ring-white mb-4"
-          />
-          <h1 className="text-2xl font-bold text-gray-800">
-            hi, i&apos;m lucy!
-          </h1>
-          <p className="text-gray-500 text-sm mt-1">software engineer at Google</p>
-          <p className="text-gray-400 text-xs mt-0.5">Brown &apos;22</p>
+    <div
+      className="md:hidden fixed inset-0 z-[99999] flex flex-col"
+      style={{
+        background: '#FAF9F4',
+        fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+      }}
+    >
+      {/* Notes yellow header */}
+      <div
+        className="flex-none flex items-center justify-center h-12 shadow-sm"
+        style={{ background: 'linear-gradient(180deg, #FFD60A 0%, #F5C400 100%)' }}
+      >
+        <span className="text-base font-bold" style={{ color: '#1C1C1E' }}>Lucy Qu</span>
+      </div>
 
-          <div className="flex items-center gap-4 mt-4">
-            <a href="https://www.linkedin.com/in/lucyqu/" target="_blank" rel="noopener noreferrer"
-               className="text-sm text-gray-500 hover:underline font-medium">LinkedIn</a>
-            <a href="https://github.com/lxcyqx" target="_blank" rel="noopener noreferrer"
-               className="text-sm text-gray-500 hover:underline font-medium">GitHub</a>
-            <a href="mailto:lucyqu28@gmail.com"
-               className="text-sm text-gray-500 hover:underline font-medium">Email</a>
+      {/* Scrollable body */}
+      <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#FAF9F4' }}>
+        <div className="py-6 px-5">
+
+          {/* Name + role */}
+          <h1 className="font-semibold mb-0.5" style={{ fontSize: 20, color: '#1C1C1E' }}>Lucy Qu</h1>
+          <p className="mb-4" style={{ fontSize: 12, color: '#8E8E93' }}>
+            Software Engineer · Google · Brown &apos;22
+          </p>
+
+          {/* Social links */}
+          <div className="flex gap-5 mb-6">
+            <a
+              href="https://www.linkedin.com/in/lucyqu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#007AFF', fontSize: 14, textDecoration: 'none' }}
+            >LinkedIn</a>
+            <a
+              href="https://github.com/lxcyqx"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#007AFF', fontSize: 14, textDecoration: 'none' }}
+            >GitHub</a>
+            <a
+              href="mailto:lucyqu28@gmail.com"
+              style={{ color: '#007AFF', fontSize: 14, textDecoration: 'none' }}
+            >Email</a>
           </div>
-        </div>
 
-        {/* About */}
-        <div className="bg-white rounded-2xl shadow-sm p-5 mb-6">
-          <h2 className="font-semibold text-gray-700 mb-3">About</h2>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            I&apos;m a software engineer at Google on the Display Ads team. I studied CS & Visual Arts at Brown,
-            was a CS TA for three semesters, and took many studio art classes, including some at RISD.
-            Outside work: gym, pilates, yoga, traveling, restaurants, art events.
-          </p>
-          <br></br>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            For the best viewing experience, open this website on a desktop.
-          </p>
-        </div>
+          <hr style={{ borderColor: '#E5E5EA', marginBottom: 20 }} />
 
-        {/* Projects */}
-        <div>
-          <h2 className="font-semibold text-gray-700 mb-3">Projects</h2>
-          <div className="flex flex-col gap-3">
-            {[
-              { slug: 'computer-graphics', label: 'Computer Graphics' },
-              { slug: 'step-internship', label: 'STEP Capstone: Groupple' },
-              { slug: 'iterative-design', label: 'Iterative Design & User Testing' },
-              { slug: 'book-depository-redesign', label: 'Book Depository Redesign' },
-              { slug: 'ab-testing', label: 'A/B Testing & Eye Tracking' },
-              { slug: 'personas', label: 'Personas & Storyboarding' },
-              { slug: 'fine-art', label: 'Fine Art' },
-              { slug: 'digital-illustration', label: 'Digital Illustration' },
-              { slug: 'animation', label: 'Animation' },
-              { slug: 'architecture', label: 'Architecture' },
-            ].map(({ slug, label }) => (
-              <a key={slug} href={`/projects/${slug}`}
-                 className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow flex items-center gap-3">
-                <img src="/icons/macos-folder.png" width={18} height={18} alt="Folder"/>
-                <p className="text-sm font-medium text-gray-800">{label}</p>
-              </a>
+          {/* About */}
+          <h2 className="font-semibold mb-2" style={{ fontSize: 18, color: '#1C1C1E' }}>About</h2>
+          <p className="mb-6" style={{ fontSize: 15, color: '#3C3C43', lineHeight: 1.7 }}>
+            I&apos;m a software engineer at Google on the Display Ads team. I studied CS &amp; Visual Arts
+            at Brown, was a CS TA for three semesters, and took many studio art classes, including some
+            at RISD. Outside work: gym, pilates, yoga, traveling, restaurants, art events.
+          </p>
+
+          <hr style={{ borderColor: '#E5E5EA', marginBottom: 20 }} />
+
+          {/* Engineering & Design */}
+          <h2 className="font-semibold mb-3" style={{ fontSize: 18, color: '#1C1C1E' }}>
+            Engineering &amp; Design
+          </h2>
+          <div className="overflow-hidden" style={{ borderRadius: 12, background: '#F2F2F7' }}>
+            {engineeringDesign.map((project, i) => (
+              <div key={project.slug}>
+                <a
+                  href={`/projects/${project.slug}`}
+                  className="flex items-center gap-3 px-4 py-3"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <span className="flex-1" style={{ fontSize: 15, color: '#1C1C1E' }}>
+                    {project.displayTitle}
+                  </span>
+                  <span style={{ fontSize: 20, color: '#C7C7CC' }}>›</span>
+                </a>
+                {i < engineeringDesign.length - 1 && (
+                  <div style={{ height: 1, background: '#E5E5EA', marginLeft: 44 }} />
+                )}
+              </div>
             ))}
           </div>
+
+          <div style={{ height: 24 }} />
+          <hr style={{ borderColor: '#E5E5EA', marginBottom: 20 }} />
+
+          {/* Art & Illustration */}
+          <h2 className="font-semibold mb-3" style={{ fontSize: 18, color: '#1C1C1E' }}>
+            Art &amp; Illustration
+          </h2>
+          <div className="overflow-hidden" style={{ borderRadius: 12, background: '#F2F2F7' }}>
+            {art.map((project, i) => (
+              <div key={project.slug}>
+                <a
+                  href={`/projects/${project.slug}`}
+                  className="flex items-center gap-3 px-4 py-3"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <span className="flex-1" style={{ fontSize: 15, color: '#1C1C1E' }}>
+                    {project.displayTitle}
+                  </span>
+                  <span style={{ fontSize: 20, color: '#C7C7CC' }}>›</span>
+                </a>
+                {i < art.length - 1 && (
+                  <div style={{ height: 1, background: '#E5E5EA', marginLeft: 44 }} />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center pb-8" style={{ fontSize: 12, color: '#8E8E93' }}>
+            Open on desktop for the full experience ✦
+          </p>
         </div>
       </div>
     </div>

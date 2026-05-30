@@ -31,3 +31,11 @@ body {
 [data-drag-handle]:active {
   cursor: grabbing;
 }
+
+/* Mobile: Notes-style cream background */
+@media (max-width: 767px) {
+  body {
+    background-color: #FAF9F4;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+}
