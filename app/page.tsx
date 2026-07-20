@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import MenuBar from '@/components/MenuBar'
 import Dock from '@/components/Dock'
 import FolderIcon from '@/components/FolderIcon'
@@ -130,9 +131,61 @@ function SectionLabel({ label }: { label: string }) {
   )
 }
 
+function AboutDetail({ onBack }: { onBack: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-[100000] flex flex-col bg-white"
+      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif" }}
+    >
+      {/* Header */}
+      <div className="flex-none flex items-center justify-between px-4 h-14 border-b border-gray-100">
+        <button
+          onClick={onBack}
+          className="flex items-center gap-1 text-sm"
+          style={{ color: '#007AFF', background: 'none', border: 'none', padding: 0 }}
+        >
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" style={{ marginRight: 2 }}>
+            <path d="M7 1L1 7L7 13" stroke="#007AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Notes
+        </button>
+        <span className="text-sm font-semibold" style={{ color: '#1C1C1E' }}>Note</span>
+        <div className="w-14" />
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto px-5 py-5">
+        <p className="text-xs mb-4" style={{ color: '#8E8E93' }}>
+          Today at {new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+        </p>
+        <h2 className="text-xl font-bold mb-4" style={{ color: '#1C1C1E' }}>about me</h2>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: '#1C1C1E' }}>
+          Hi! I&apos;m Lucy, a software engineer at Google on the Display Ads team, where I work on client-side rendering of ad formats. I graduated from Brown University in 2022, where I was a CS TA for three semesters and took studio art classes — including courses at RISD. Before joining Google full-time, I completed two SWE internships at Google and one at GivePulse.
+        </p>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: '#1C1C1E' }}>
+          Outside of work I&apos;m usually at the gym, taking pilates or yoga, exploring new restaurants, traveling, and completing art courses at SVA (so far I have taken silkscreen and ceramics. next up: stained glass).
+        </p>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: '#1C1C1E' }}>
+        </p>
+        <div className="flex gap-5 pt-2 border-t border-gray-100">
+          <a href="https://www.linkedin.com/in/lucyqu/" target="_blank" rel="noopener noreferrer"
+             className="text-sm font-medium" style={{ color: '#007AFF', textDecoration: 'none' }}>LinkedIn</a>
+          <a href="https://github.com/lxcyqx" target="_blank" rel="noopener noreferrer"
+             className="text-sm font-medium" style={{ color: '#007AFF', textDecoration: 'none' }}>GitHub</a>
+          <a href="mailto:lucyqu28@gmail.com"
+             className="text-sm font-medium" style={{ color: '#007AFF', textDecoration: 'none' }}>Email</a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function MobileFallback() {
+  const [aboutOpen, setAboutOpen] = useState(false)
   const engineeringDesign = projects.filter((p) => p.category !== 'art')
   const art = projects.filter((p) => p.category === 'art')
+
+  if (aboutOpen) return <AboutDetail onBack={() => setAboutOpen(false)} />
 
   return (
     <div
@@ -155,23 +208,19 @@ function MobileFallback() {
 
         {/* Pinned */}
         <SectionLabel label="Pinned" />
-        <div className="border-b border-gray-100 px-4 py-3 flex items-start gap-3">
+        <button
+          onClick={() => setAboutOpen(true)}
+          className="w-full text-left border-b border-gray-100 px-4 py-3 flex items-start gap-3 active:bg-gray-50"
+          style={{ background: 'none' }}
+        >
           <span className="mt-0.5 text-base leading-none">📌</span>
           <div className="flex-1 min-w-0">
             <p className="font-semibold text-sm" style={{ color: '#1C1C1E' }}>lucy qu - about me</p>
             <p className="text-xs mt-0.5" style={{ color: '#8E8E93' }}>
               software engineer at Google · Brown &apos;22
             </p>
-            <div className="flex gap-4 mt-2">
-              <a href="https://www.linkedin.com/in/lucyqu/" target="_blank" rel="noopener noreferrer"
-                 className="text-xs" style={{ color: '#007AFF', textDecoration: 'none' }}>LinkedIn</a>
-              <a href="https://github.com/lxcyqx" target="_blank" rel="noopener noreferrer"
-                 className="text-xs" style={{ color: '#007AFF', textDecoration: 'none' }}>GitHub</a>
-              <a href="mailto:lucyqu28@gmail.com"
-                 className="text-xs" style={{ color: '#007AFF', textDecoration: 'none' }}>Email</a>
-            </div>
           </div>
-        </div>
+        </button>
 
         {/* Engineering & Design */}
         <SectionLabel label="Engineering & Design" />
